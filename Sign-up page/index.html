@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+        <span class="borderLine"></span>
+        <form id="loginForm" onsubmit="console.log('Signup form submitted via onsubmit')">
+            <h2>Sign Up</h2>
+            <div class="inputBox">
+                <input type="text" id="username" required>
+                <span>Username</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="email" id="email" required>
+                <span>Email</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" id="password" required>
+                <span>Password</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" id="confirmPassword" required>
+                <span>Confirm Password</span>
+                <i></i>
+            </div>
+            <div class="links">
+                <a href="#">Already have an account? Login</a>
+            </div>
+            <div class="btn">
+                <input type="submit" value="Sign Up">
+            </div>
+            <div class="error-message" id="errorMessage"></div>
+        </form>
+    </div>
+</body>
+</html>
