@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #23242a;
+    padding: 1rem;
+}
+
+.box {
+    position: relative;
+    width: min(380px, 90vw);
+    height: auto;
+    min-height: 420px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* rotating borders */
+.box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, transparent, #89dce2, #89dce2, #89dce2);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, transparent, #89dce2, #89dce2, #89dce2);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+
+.borderLine {
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+
+.borderLine::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, transparent, #ff277a, #ff2770, #ff2770);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -1.5s;
+}
+
+.borderLine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, transparent, #ff2770, #ff2770, #ff2770);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -4.5s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.box form {
+    position: absolute;
+    inset: 4px;
+    background: #222;
+    /* 20-40 for vertically 15-30 for horizontally */
+    padding: clamp(20px, 5vw, 40px) clamp(15px, 4vw, 30px);
+    border-radius: 8px;
+    /* places the form above the animated borders  */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.box form h2 {
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.box form .inputBox {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 1.5rem auto 0;
+}
+
+.box form .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    letter-spacing: 0.05em;
+    color: #23242a;
+    transition: 0.5s;
+    z-index: 10;
+}
+
+.box form .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 20px 10px 10px;
+    pointer-events: none;
+    color: #8faf8f;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+.box form .inputBox input:valid ~ span,
+.box form .inputBox input:focus ~ span {
+    color: #fff;
+    font-size: clamp(0.65rem, 2vw, 0.75rem);
+    transform: translateY(-34px);
+}
+
+.box form .inputBox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.box form .inputBox input:valid ~ i,
+.box form .inputBox input:focus ~ i {
+    height: 44px;
+}
+
+.box form .links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.box form .links a {
+    margin: 10px 0;
+    font-size: clamp(0.7rem, 2vw, 0.85rem);
+    color: #8f8f8f;
+    text-decoration: none;
+}
+
+.box form .links a:hover,
+.box form .links a:nth-child(2) {
+    color: #fff;
+}
+
+.box form input[type="submit"] {
+    border: none;
+    outline: none;
+    padding: 9px 25px;
+    background: #fff;
+    cursor: pointer;
+    font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+    border-radius: 4px;
+    font-weight: 600;
+    width: min(100px, 30vw);
+    margin: 10px auto 0;
+}
+
+.box form input[type="submit"]:active {
+    opacity: 0.8;
+}
+
+.error-message {
+    color: #ff2770;
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    text-align: center;
+    margin-top: 10px;
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .box {
+        width: 95vw;
+        min-height: 380px;
+    }
+
+    .box form {
+        padding: clamp(15px, 4vw, 25px);
+    }
+
+    .box form .inputBox {
+        max-width: 100%;
+    }
+}
